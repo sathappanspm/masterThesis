@@ -1,0 +1,227 @@
+% rubber: rules rules.ini
+%
+% PROJECT: <ETD> Electronic Thesis and Dissertation Initiative
+%   TITLE: LaTeX report template for ETDs in LaTeX
+%  AUTHOR: Neill Kipp, nkipp@vt.edu
+%     URL: http://etd.vt.edu/latex/
+% SAVE AS: etd.tex
+% REVISED: September 6, 1997 [GMc 8/30/10]
+% 
+
+% Instructions: Remove the data from this document and replace it with your own,
+% keeping the style and formatting information intact.  More instructions
+% appear on the Web site listed above.
+
+\documentclass[10pt]{report}
+
+\usepackage{caption}
+\DeclareCaptionType{copyrightbox}
+% \ifCLASSINFOpdf   
+%    \usepackage[pdftex]{graphicx}     
+%    % declare the path(s) where your graphic files are       
+%    \graphicspath{{../pdf/}{../jpeg/}{./image/}}    
+%    % and their extensions so you won't have to specify these with    
+%    % every instance of \includegraphics      
+%    \DeclareGraphicsExtensions{.pdf,.jpeg,.png,.jpg}   
+%  \else   
+%    % or other class option (dvipsone, dvipdf, if not using dvips). graphicx     
+%    % will default to the driver specified in the system graphics.cfg if no   % driver is specified.    
+%    \usepackage[dvips]{graphicx}   
+%    % declare the path(s) where your graphic files are     
+%    \graphicspath{{../eps/}}    
+%   % and their extensions so you won't have to specify these with   
+%   % every instance of \includegraphics    
+%   % \DeclareGraphicsExtensions{.eps}   
+% \fi
+
+\usepackage{subcaption}
+\usepackage{url}
+\usepackage{epstopdf}
+\usepackage{multirow}
+\usepackage{amsmath, amsfonts, amssymb}
+\usepackage{graphicx}
+\graphicspath{{./figures/}}
+\usepackage{color}
+%package for proper unicode rendering
+\usepackage[utf8]{inputenc}
+\usepackage{url}
+\inputencoding{utf8}
+
+
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{8.5in}
+\setlength{\evensidemargin}{0in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\topmargin}{0in}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.1in}
+
+% Uncomment for double-spaced document.
+% \renewcommand{\baselinestretch}{2}
+
+% \usepackage{epsf}
+
+\begin{document}
+
+\thispagestyle{empty}
+\pagenumbering{roman}
+
+\newcommand{\then}{\Rightarrow}
+\newcommand{\softor}{\operatornamewithlimits{\tilde{\vee}}}
+\newcommand{\softand}{\operatornamewithlimits{\tilde{\wedge}}}
+\newcommand{\softthen}{\operatornamewithlimits{\tilde{\then}}}
+\newcommand{\softneg}{\operatornamewithlimits{\tilde{\neg}}}
+
+\begin{center}
+
+% TITLE
+{\Large
+    Forecasting Protests by Detecting Future Time Mentions in News and Social Media
+}
+
+\vfill
+
+Sathappan Muthiah
+\vfill
+
+Dissertation submitted to the Faculty of the \\
+Virginia Polytechnic Institute and State University \\
+in partial fulfillment of the requirements for the degree of
+
+\vfill
+
+Master of Science\\
+in \\
+Computer Science and Applications
+
+\vfill
+
+Naren Rama, Chair \\
+Chang Tien Lu \\
+Graham E Katz \\
+
+\vfill
+
+June 26, 2014 \\
+Arlington, Virginia
+
+\vfill
+
+Keywords: Textmining, Information Retrieval, Social Media
+\\
+Copyright 2014, Sathappan Muthiah
+
+\end{center}
+
+\pagebreak
+
+\thispagestyle{empty}
+\begin{center}
+
+{\large Forecasting Protests by Detecting Future Time Mentions in News and Social Media
+}
+
+\vfill
+
+Sathappan Muthiah
+
+\vfill
+
+(ABSTRACT)
+
+\vfill
+
+\end{center}
+
+Civil unrest (protests, strikes, and ``occupy'' events) is a common occurrence in both democracies and authoritarian regimes. The study of civil unrest is a key topic for political scientists as it helps capture an important mechanism by which citizenry express themselves. In countries where civil unrest is lawful, qualitative analysis has revealed that more than 75\% of the protests are planned, organized, and/or announced in advance; therefore detecting future time mentions in relevant news and social media is a simple way to develop a protest forecasting system. We develop such a system in this paper, using a combination of key phrase learning to identify what to look for, probabilistic soft logic to reason about location occurrences in extracted results, and time normalization to resolve future tense mentions. We illustrate the application of our system to 10 countries in Latin America, viz. Argentina, Brazil, Chile, Colombia, Ecuador, El Salvador, Mexico, Paraguay, Uruguay, and Venezuela. Results demonstrate our successes in capturing significant societal unrest in these countries with an average lead time of 4.08 days. We also study the selective superiorities of news media versus social media (Twitter, Facebook) to identify relevant tradeoffs.
+\vfill
+
+% GRANT INFORMATION
+
+% That this work received support from the Southeastern Universities
+% Research Association (SURA) ``Monticello Library Project'' is purely
+% coincidental.
+
+\pagebreak
+
+% Dedication and Acknowledgments are both optional
+\chapter*{Dedication}
+\input{sections/dedications}
+\chapter*{Acknowledgments}
+\input{sections/acknowledgements}
+
+\tableofcontents
+\pagebreak
+
+\listoffigures
+\pagebreak
+
+\listoftables
+\pagebreak
+
+\pagenumbering{arabic}
+\pagestyle{myheadings}
+
+\chapter{Introduction}
+\markright{Sathappan Muthiah \hfill Chapter 1. Introduction \hfill}
+\label{intro}
+\input{sections/introduction}
+%%%%%%%%%%%%%%%%%
+%
+% Include an EPS figure with this command:
+%   \epsffile{filename.eps}
+%
+
+%%%%%%%%%%%%%%%%
+%
+% Do tables like this:
+\chapter{Related Work}
+\markright{Sathappan Muthiah \hfill Chapter 2. Related Work \hfill}
+\input{sections/related_works}
+
+\chapter{Preliminaries}
+\markright{Sathappan Muthiah \hfill Chapter 3. Preliminaries  \hfill}
+\input{sections/problem}
+
+\chapter{Probabilistic Soft Logic}
+\markright{Sathappan Muthiah \hfill Chapter 4. Probabilistic Soft Logic \hfill}
+\input{sections/psl}
+\label{section:PSL}
+
+\chapter{Approach}
+\markright{Sathappan Muthiah \hfill Chapter 5. Approach \hfill}
+\input{sections/approach}
+
+\chapter{Experiments}
+\markright{Sathappan Muthiah \hfill Chapter 6. Experiments \hfill}
+\input{sections/experiments}
+
+\chapter{Discussion}
+\markright{Sathappan Muthiah \hfill Chapter 7. Discussion  \hfill}
+We have described an approach to forecasting protests by detecting mentions of future events in news and social
+media. The two twin issues of i) resolving the date and ii) resolving the location have been addressed satisfactorily
+to realize an effective protest forecasting system. As different forms of communication media gain usage, systems
+like ours will be crucial to understanding the concerns of citizenry.
+
+Our future work is aimed at three aspects. First, to address situations such as nationwide protests and systems of protests,
+we must generalize our system from generating protests at a single article level to digesting groups of articles. This will
+require more sophisticated reasoning using PSL programs. 
+Second, we would like to generalize our approach that currently
+does detection of overt plans for protest to not-so-explicitly stated expressions of discontent. 
+Finally, we plan to consider other population-level events of interest than just civil unrest, e.g., domestic political crises,
+and design detectors to recognize the imminence of such events.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% If you are using BibTeX, uncomment the following:
+\cleardoublepage
+%\phantomsection
+\addcontentsline{toc}{chapter}{Bibliography}
+\bibliographystyle{IEEEtran}
+\markright{Sathappan Muthiah \hfill References \hfill}
+\bibliography{references}
+
+\end{document}
