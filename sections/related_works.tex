@@ -1,7 +1,6 @@
 Four categories of related work 
 %-- \emph{Event Detection, Temporal Information Extraction, Future Retrieval, Extraction of Planned Events and Event Forecasting} -- 
 are briefly discussed here.
-
 \begin{table*}
     \centering
     \caption{Comparison of our approach against other future retrieval techniques.}
@@ -16,9 +15,9 @@ are briefly discussed here.
 \end{tabular}
 \label{comp-table}
 \end{table*}
-
 \section{Event detection via text extractions}
-is an extensively studied topic in the literature. Document clustering techniques are used 
+\vspace{-.8em}
+Event Detection is an extensively studied topic in the literature. Document clustering techniques are used 
 in~\cite{Allan:2002:TDT, Yang:1998:SRO, Gabrilovich:2004:NPP} to identify events retrospectively or as the stories arrive.
 Works like~\cite{Banko07openinformation, Chambers:2011:TIE, riloff2003learning} focus on
 extraction patterns (templates) to extract information from text. Ritter et al.~\cite{Ritter:2012} show that
@@ -30,6 +29,7 @@ Highly specialized applications
 also exist; e.g., Sakaki et al.~\cite{Sakaki:2010:EST} mine tweets to enable prompt detection of occurences of earthquakes.
 
 \section{Temporal information extraction} 
+\vspace{-.8em}
 Temporal Information Extraction is another well studied topic.
 The TempEval challenge~\cite{tempeval} led to a significant amount of
 algorithmic development for temporal NLP.
@@ -37,8 +37,10 @@ For instance, a specification language
 for temporal and event expressions in natural language text is described in~\cite{timeml}.
 Refs.~\cite{LlorensDGS12} and~\cite{tempex} provide methods to resolve temporal expressions in text (our own
 work here uses the TIMEN package~\cite{LlorensDGS12}).
+\vspace{-.8em}
 
 \section{Event forecasting}
+\vspace{-.8em}
 Event forecasting is a burgeoning area. 
 Radinsky and Horvitz~\cite{Radinsky:2013:MWP} find event sequences from a corpora and then use these sequences to determine if 
 an event of interest (e.g., a disease outbreak, or a riot)
@@ -51,9 +53,11 @@ This work only focuses on prediction of significant events (suitably defined) an
 the forecast is limited to the next three days. Ramakrishnan et al.~\cite{emberskdd} describe the EMBERS
 system for forecasting civil unrest using open source indicators but this work is primarily focused on shallow mining of
 a broad set of data sourceas in contrast to the focused analysis of planned protest announcements that we study here.
+\vspace{-.8em}
 
-Finally, the area of research most closely related to our work is the emerging topic of
-\section{Future Retrieval}.
+\section{Future Retrieval}
+\vspace{-.8em}
+Finally, Future Retrieval, an emerging research topic, is another area of research most closely related to our work.
 Baeza-Yates~\cite{baeza2005searching} providing one of the earliest discussions
 of this topic; here future temporal information in text is found and used to retrieve content from search queries that 
 combine both text and time with a simple ranking scheme. Kawai et al.~\cite{Kawai:2010:CSE} present a search engine (ChronoSeeker) for searching 

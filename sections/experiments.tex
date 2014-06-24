@@ -59,9 +59,10 @@ social media footprint (relative to countries like Brazil and Venezuela).\\
 \begin{table*}[tb!]
     \tiny
     \centering
-    \caption{\label{tb:sourcewisecomparison} Country-wise breakdown of forecasting performance for different data sources.
+    \caption[Country-wise breakdown of forecasting performance for different data sources.]{
 QS=Quality Score; Pr=Precision; Rec=Recall; LT=Lead Time.
 AR=Argentina; BR=Brazil; CL=Chile; CO=Colombia; EC=Ecuador;SV=El Salvador; MX=Mexico; PY=Paraguay; UY=Uruguay; VE=Venezuela. A $-$ indicates that the source did not produce any warnings for that country in the studied period.}
+    \label{tb:sourcewisecomparison}
     \begin{tabular}{|*{17}{c|}}
         \hline
         & \multicolumn{4}{ |c| }{News/Blogs} & \multicolumn{4}{ |c| }{Twitter} & \multicolumn{4}{ |c| }{Facebook} & \multicolumn{4}{ |c| }{Combined}\\
@@ -92,7 +93,7 @@ AR=Argentina; BR=Brazil; CL=Chile; CO=Colombia; EC=Ecuador;SV=El Salvador; MX=Me
 
 \noindent
 {\bf Are there country-specific selective superiorities for the different data sources considered here?}
-Table~\ref{tb:sourcewisecomparison} presents a breakdown of perfomance, country-wise and source-wise, of 
+Table~\ref{tb:sourcewisecomparison} presents a breakdown of perfomance, country-wise and source-wise, of
 our approach for a recent month, viz. March 2014.
 It is clear that the multiple data sources are necessary to achieve a high recall and that by and large
 these sources are providing mutually exclusive alerts. (Note also that some data sources do not produce alerts for specific
@@ -101,19 +102,19 @@ source of alerts for countries like Chile and the latter is a better source for 
 News and blogs achieve higher recall than social media sources indicating that most plans for protests are announced
 in established media. They are also
 higher quality sources for alerts in countries like El Salvador, Paraguay, and Uruguay.
-Finally, note that news and blogs offer a much higher lead time (4.57 days) 
+Finally, note that news and blogs offer a much higher lead time (4.57 days)
 as compared to that for Facebook (2.44 days) or for Twitter (2.82 days). The quality scores are
 further broken down in Table~\ref{tb:modelwisecomparison} into their date and location components.
 A longitudunal perspective on quality scores is
 given in Fig.~\ref{fig:monthlyqs}. Note that in general Twitter tends to have a higher quality score
-as multiple re-tweets of future event mentions is a direct indicator of the popularity of an event as 
-well as the intent of people to join an event. 
+as multiple re-tweets of future event mentions is a direct indicator of the popularity of an event as
+well as the intent of people to join an event.
 In contrast, mentions of future events in news do not directly shed any insight into popularity or people's
 support for the event's causes.\\
 
 \begin{table*} %[tb!]
 \centering
-\caption{Comparing the location and date scores of different sources in specific countries.
+\caption[Comparing the location and date scores of different sources in specific countries.]{
 AR=Argentina; BR=Brazil; CL=Chile; CO=Colombia; EC=Ecuador;SV=El Salvador; MX=Mexico; PY=Paraguay; UY=Uruguay; VE=Venezuela. A $-$ indicates that the source did not produce any warnings for that country in the studied period.}
 \label{tb:modelwisecomparison}
 \begin{tabular}{||l|*{17}{c|}}
