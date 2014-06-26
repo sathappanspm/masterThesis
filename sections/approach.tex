@@ -26,9 +26,9 @@ steps (see Fig.~\ref{flowchart}) is outlined next.
 
 \section{Data Ingest}
 \subsubsection{RSS Feeds (News/Blogs)}
-We ingest a total of X {TODO: Get Exact Number From S3} feeds of which Y are news and the rest are blogs. The list of news sources to ingest was mainly obtained from the Latin American Network Information Center (LANIC) webpage. Some other online sources like Wikipedia,\url{www.onlinenewspapers.com}, \url{www.w3newspapers.com} , etc. were used to find more sources of online news in Latin America.Similarly in order to obtain a list of blogs to follow we used blog search engines like \url{www.technorati.com}.
+We ingest a total of 9498 feeds of which 6236 are news and the rest are blogs. The list of news sources to ingest was mainly obtained from the Latin American Network Information Center (LANIC) webpage. Some other online sources like Wikipedia,\url{www.onlinenewspapers.com}, \url{www.w3newspapers.com}, etc., were used to find more sources of online news in Latin America.Similarly in order to obtain a list of blogs to follow we used blog search engines like \url{www.technorati.com}.
 
-We then subscribed to the RSS feeds of all sources identified. For sources, that did not have a feed of its own, we used Google Feed. We can also use RSS feed generators like \url{www.feedity.com} for the same purpose. We used to Google Feed API to collect all the RSS feeds until its shutdown in july 2013. After that we moved to a custom feed collection solution in python that made use of the feedparser library (\url{http://code.google.com/p/feedparser}).The Fig.~\ref{rssdistribution} shows the number of messages that we ingest for each country on a daily basis.
+We then subscribed to the RSS feeds of all identified sources. For sources, that did not have a feed of its own, we used Google Feed. We can also use RSS feed generators like \url{www.feedity.com} for the same purpose. We used Google Feed API to collect all the RSS feeds until its shutdown in july 2013. After that we moved to a custom feed collection solution in python that made use of the feedparser library (\url{http://code.google.com/p/feedparser}).The Fig.~\ref{rssdistribution} shows the number of messages that we ingest for each country on a daily basis.
 
 \begin{figure*}
     \centering
@@ -59,8 +59,16 @@ the body of the tweet.
 
 \subsubsection{Facebook Events}
 We use Facebook Graph API and Facebook Query Language (FQL) to obtain Facebook Event data.
-The Graph API is used to query/search for Facebook Events with a particular keyword. We make use of a very specific list of 20 keywords that are mostly signify protest or ways to protest 
-in the 3 languages English, Spanish and Portuguese. The Graph API returns a list of all Facebook Event IDS that contain this keyword irrespective of its location. The IDs of Event Pages are then used in a FQL query to obtain the features of an event like count of members, creator of the event, number of invitations sent,, number of accepted invitations, number rejected, location and venue, start and end date, description of event, host details,etc. The host details in an Event page and the details about its creator are very critical in identifying if the Event is protest related. We ignore Events hosted by musical bands, restaurants or other commercial organizations. We also ignore events hosted by an individual.Fig. ~\ref{figures/facebook_example} shows an example of a Facebook Event page calling for protest.
+The Graph API is used to query/search for Facebook Events with a particular keyword. We make use of a very specific list of 20 keywords that mostly signify protest or ways to protest 
+in the 3 languages English, Spanish and Portuguese. The Graph API returns a list of all Facebook Event IDS that contain this keyword irrespective of its location. The IDs of Event Pages are then used in a FQL query to obtain the features of an event like count of members, creator of the event, number of invitations sent, number of accepted invitations, number rejected, location and venue, start and end date, description of event, host details,etc. The host details in an Event page and the details about its creator are very critical in identifying if the Event page is protest related. We ignore Events hosted by musical bands, restaurants or other commercial organizations. We also ignore events hosted by an individual.Fig. ~\ref{fbevent_example} shows an example of a Facebook Event page calling for protest against the construction of the Temple of Solomon in Sao Paulo, Brazil.
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=\textwidth]{FB_Event_example}
+    \caption{Example of a Facebook Event}
+    \label{fbevent_example}
+\end{figure*}
+
 
  
 \section{Linguistic Preprocessing}
