@@ -45,8 +45,7 @@ and the predicted event date (i.e., the {\bf when} of the event).
 %independent third party (MITRE) and the authors of this study do not
 %have any participation in this activity. 
 \section{Evaluation Metrics -- Quality score}
-To evaluate our alerts we have access to a database of protests organized by a third party (source and reference
-not provided due to double blind reviewing considerations, but will be added later). We refer to this database as the
+To evaluate our alerts we have access to a database of protests organized by a third party. We refer to this database as the
 GSR (for Gold Standard Report). Human analysts scan newspapers of record in the countries of interest and catalog
 protests. The structure of a GSR event (see Fig.~\ref{fig:alertstructure} (right)) is similar to that of an alert with
 the only difference being that an event record captures both the reported date (i.e., the date of newspaper publication)
@@ -154,15 +153,14 @@ where allowable edges are those that satisfy the inclusion criteria, and
 where weights on these allowable edges denote their quality scores.
 We then construct
 a maximum weighted bipartite matching, e.g., see
-Fig.~\ref{fig:matching} (middle). Such matchings are conducted on a monthly basis
+Fig.~\ref{fig:matching}. Such matchings are conducted on a monthly basis
 with a lookback period to bring in unmatched warnings from the previous month.
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.50\textwidth]{figures/matching.pdf}
 \caption[An example of the bipartite matching used for evaluation]{Given a set of candidate warning-event matches (left), we evaluate the
-performance of EMBERS using either a regular bipartite matching (middle) or
-by constructing a non-crossing matching (right).}
+performance of EMBERS using either a regular bipartite matching (right).}
 \label{fig:matching}
 \end{figure}
 
