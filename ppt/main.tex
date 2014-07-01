@@ -314,7 +314,7 @@
 
         \begin{flalign*}
             ENTITY&(S, location) \softand IsState(S)&\\
-                                    &\rightarrow ArticleCountry(Article, S)&
+                                    &\rightarrow ArticleState(Article, S)&
         \end{flalign*}
 
     \end{itemize}
@@ -338,7 +338,7 @@
 
     \begin{flalign*}
         ENTITY&(O, organization) \softand IsState(O)&\\
-              &\rightarrow ArticleCountry(Article, O) &
+              &\rightarrow ArticleState(Article, O) &
     \end{flalign*}
 
     \end{itemize}
@@ -466,12 +466,12 @@
     \frametitle{Evaluation Methodology (contd ...)}
     \begin{itemize}
         \item
-            Date Score
+            Location Score
             \begin{equation*}
                 \operatorname{LS}=1 - \frac{\min(\textrm{distance offset}, 300)}{300}
             \end{equation*}
         \item
-            Location Score
+            Date Score
             \begin{equation*}
                 \operatorname{DS}=1 - \frac{\min(\textrm{date offset}, \operatorname{INTERVAL})}{\operatorname{INTERVAL}}
             \end{equation*}
@@ -479,7 +479,7 @@
         \item
             Total Quality Score
             \begin{equation*}
-                \operatorname{QS}=(\operatorname{DS} + \operatorname{QS})*2
+                \operatorname{QS}=(\operatorname{DS} + \operatorname{LS})*2
             \end{equation*}
     \end{itemize}
 

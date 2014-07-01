@@ -10,7 +10,7 @@ in the rollback of price increases for public services, such as during the `Braz
 \begin{figure}
     \centering
     \includegraphics[scale=0.5]{alertstructure}
-    \caption{An example warning (left) and GSR event (right).}
+    \caption{An example warning (left) and GSR (Goal Standard Report) event (right).}
     \label{fig:alertstructure}
 \end{figure}
 Our goal is to identify calls for protests, strikes, or civil disobedience movements from news, blogs, Tweets, and Facebook
@@ -120,7 +120,7 @@ latitude and longitude values, thus facilitating the computation of distance.
 We use the physical distance based criteria for our purposes.
 
 \subsection{Inclusion Criteria}
-Thus far we have demonstrated, given a warning-event pair, how we can
+Thus far we have demonstrated, given a warning-event(W-E) pair, how we can
 score their fitness. Inclusion criteria define which W-E pairs {\it can}
 even be considered for scoring. We have already mentioned one inclusion
 criterion, viz. that lead time must be $> 0$. The full list of inclusion
@@ -156,6 +156,7 @@ a maximum weighted bipartite matching, e.g., see
 Fig.~\ref{fig:matching}. Such matchings are conducted on a monthly basis
 with a lookback period to bring in unmatched warnings from the previous month.
 
+The maximum weighted bipartite matching is done using Hungarian algorithm ~\cite{kuhn1955hungarian}
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.50\textwidth]{figures/matching.pdf}
