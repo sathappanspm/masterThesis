@@ -1,5 +1,5 @@
-\documentclass{beamer}
-\usetheme{Antibes}
+\documentclass[red]{beamer}
+\usetheme{Madrid}
 %\usepackage{caption}
 %\DeclareCaptionType{copyrightbox}
 \graphicspath{{../figures/}}
@@ -21,7 +21,7 @@
 
 \begin{document}
 
-\title{Forecasting Protests by Detecting Future Time Mentions in News and Social Media
+\title[Planned Protest]{Forecasting Protests by Detecting Future Time Mentions in News and Social Media
 }
 \author{Sathappan Muthiah}
 \institute{Virginia Tech}
@@ -36,29 +36,33 @@
 %Table of Contents slide
 \begin{frame}
 \frametitle{Table of Contents}
+\tableofcontents
+\end{frame}
+\section{Problem Overview}
+\begin{frame}
+\frametitle{Table of Contents}
 \tableofcontents[currentsection]
 \end{frame}
 
 
-\section{Problem Overview}
 \begin{frame}
     \frametitle{Problem Overview}
     \begin{itemize}
         \item
-            Detecting Future time mentions in relevant media to build a protest forecasting system.
+            Detecting Future time mentions in relevant media to build a protest forecasting system
         \item
-            Investigate the selective superiorities of Different Social Media.
+            Investigate the selective superiorities of different social media
     \end{itemize}
 \end{frame}
 
-\section{motivation}
+\subsection{motivation}
 \begin{frame}
     \frametitle{Motivation}
     \begin{itemize}
         \item
-            Around 75\% of the protests are planned, organized, or announced in advance.
+            Around 75\% of the protests are planned, organized, or announced in advance
         \item
-            Identifying these planned protests is an easy way to forecast protests.
+            Identifying these planned protests is an easy way to forecast protests
     \end{itemize}
 \end{frame}
 
@@ -67,15 +71,15 @@
     \frametitle{Key Contributions}
     \begin{itemize}
         \item
-            Real-Time Prospective Study-most studies until now have been retrospective.
+            Real-Time Prospective Study - most studies until now have been retrospective
         \item
-            Semi-Automatic approach for Learning Keyphrase filters.
+            Semi-Automatic approach for learning keyphrase filters
         \item
-            Handling Mutliple Sources.
+            Handling mutliple sources
         \item
-            Reasoning about locations.
+            Reasoning about locations
         \item
-            Handling relative dates - some recent work use only absolute dates.
+            Handling relative dates - some recent work use only absolute dates
     \end{itemize}
 \end{frame}
 
@@ -88,6 +92,13 @@
 \end{figure}
 \end{frame}
 
+
+\section{Data Sources}
+
+\begin{frame}
+\frametitle{Table of Contents}
+\tableofcontents[currentsection]
+\end{frame}
 \begin{frame}
     \frametitle{Data Sources}
     \begin{itemize}
@@ -117,53 +128,79 @@
     \end{itemize}
 \end{frame}
 
+
 \begin{frame}
     \frametitle{Long Text - RSS Feeds}
     \begin{itemize}
         \item
-            Data Duration: November 2012 to March 2014
+            A total of 9498 different RSS feeds are ingest - 6236 news sources and 3262 blogs
         \item
-            6540 News
+            Duration: November 2012 to present
         \item
-            6540 Blogs
+            List of news sources to ingest were obtained from Wikipedia,\url{www.onlinenewspapers.com}, LANIC, etc
         \item
-            Talkwalker Alerts or Google Alerts
+            List of blogs were obtained from blog search engines like \url{www.technorati.com}
+        \item
+            Google/Talkwalker Alerts - Alerts for phrases in our keyphrase dictionary
     \end{itemize}
 \end{frame}
 
 \begin{frame}
-    \frametitle{Example - RSS Feed}
+    \frametitle{Long Text - Example}
+
+   \begin{columns}
+       \column{0.3\textwidth}
+       \hspace{-1em}
+       \begin{figure}
+           \includegraphics[scale=0.27]{pp_example}
+       \end{figure}
+       \column{0.5\textwidth}
+       \begin{figure}
+           \includegraphics[scale=0.27]{rss_example}
+       \end{figure}
+   \end{columns}
 \end{frame}
 
 \begin{frame}
     \frametitle{Short Text - Twitter}
-    \begin{itemize}
-        \item
-            Datasift Firehose
-        \item
-            Duration November 2012 to March 2014
-    \end{itemize}
+        \begin{itemize}
+            \item
+                Datasift Firehose
+            \item
+                Duration: November 2012 to present
+            \item
+                URL's mentioned in a tweet are fetched and used as a separate source (alongwith RSS feeds).
+        \end{itemize}
 \end{frame}
 
+\iffalse
 \begin{frame}
     \frametitle{Example}
 \end{frame}
+\fi
 
 \begin{frame}
     \frametitle{Facebook}
+    \begin{columns}
+        \column{0.3\textwidth}
     \begin{itemize}
         \item
-            Facebook Graph API
+            Facebook Graph API - Query for Facebook Events that contain a particular keyword
         \item
-            Facebook Query Language
+            Facebook Query Language (FQL) - Obtain extra information of an Event-Id obtained by searching through Graph API
     \end{itemize}
-\end{frame}
-
-\begin{frame}
-    \frametitle{Example}
+    \column{0.4\textwidth}
+    \begin{figure}
+        \includegraphics[scale=0.22]{FB_Event_example}
+    \end{figure}
+    \end{columns}
 \end{frame}
 
 \section{Preliminaries}
+\begin{frame}
+\frametitle{Table of Contents}
+\tableofcontents[currentsection]
+\end{frame}
 \begin{frame}
 \frametitle{Preliminaries-Probabilistic Soft Logic}
     \begin{itemize}
@@ -178,32 +215,57 @@
 
 \section{Linguistic Preprocessing}
 \begin{frame}
+\frametitle{Table of Contents}
+\tableofcontents[currentsection]
+\end{frame}
+\subsection{Natural Language Enrichment}
+\begin{frame}
     \frametitle{Natural Language Enrichment}
-    \begin{itemize}
-        \item
-            Tokenization
-        \item
-            Lemmatization
-        \item
-            Noun Phrase Extraction
-        \item
-            Named Entity Extraction and Classification
-    \end{itemize}
+    \begin{columns}
+        \column{0.4\textwidth}
+            \begin{itemize}
+                \item
+                    Tokenization
+                \item
+                    Lemmatization
+                \item
+                    Noun Phrase Extraction
+                \item
+                    Named Entity Extraction and Classification
+            \end{itemize}
+        \column{0.4\textwidth}
+        \begin{figure}
+            \includegraphics[scale=0.3]{basis_enrichment}
+        \end{figure}
+    \end{columns}
 \end{frame}
 
+\subsection{TIMEN Enrichment}
 \begin{frame}
 \frametitle{TIMEN Enrichment}
-    \begin{itemize}
-        \item
-            Extraction of Absolute Dates from text
-        \item
-            Identification of Relative dates like `yesterday, next wednesday' etc.
-    \end{itemize}
+    \begin{columns}
+        \column{0.4\textwidth}
+        \begin{itemize}
+            \item
+                Extraction of Absolute Dates from text
+            \item
+                Identification of Relative dates like `yesterday, next wednesday' etc
+        \end{itemize}
+        \column{0.4\textwidth}
+        \begin{figure}
+            \includegraphics[scale=0.4]{timen_enrichment}
+        \end{figure}
+    \end{columns}
 \end{frame}
 
 \section{Geocoding}
 \begin{frame}
-\frametitle{Geocoding- RSS Feeds}
+\frametitle{Table of Contents}
+\tableofcontents[currentsection]
+\end{frame}
+\subsection{RSS}
+\begin{frame}
+\frametitle{Geocoding - RSS Feeds}
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{psl_pipeline2}
@@ -211,7 +273,7 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{Geocoding- RSS Feeds Contd.}
+    \frametitle{Geocoding - RSS Feeds (contd...)}
     \begin{itemize}
         \item Primary rules
         \begin{flalign*}
@@ -235,7 +297,7 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{Geocoding- RSS Feeds Contd.}
+    \frametitle{Geocoding - RSS Feeds (contd...)}
     \begin{itemize}
         \item Secondary rules
     \begin{flalign*}
@@ -258,11 +320,9 @@
     \end{itemize}
 \end{frame}
 
-
-
-
+\subsection{Twitter}
 \begin{frame}
-\frametitle{Geocoding- Twitter}
+\frametitle{Geocoding - Twitter}
     \begin{itemize}
         \item
             Geotag of the tweet
@@ -273,17 +333,26 @@
     \end{itemize}
 \end{frame}
 
+\subsection{Facebook}
 \begin{frame}
-\frametitle{Geocoding- Twitter}
+\frametitle{Geocoding - Facebook}
     \begin{itemize}
         \item
-            Facebook Location Objects
+            Facebook Locations - similar to twitter places
         \item
-            Facebook Event Venue/location
+            Facebook Event Venue tag
+        \item
+            Nearest geocoded point search using KD-Tree algorithm
     \end{itemize}
 \end{frame}
 
 \section{Phrase Filtering}
+\begin{frame}
+\frametitle{Table of Contents}
+\tableofcontents[currentsection]
+\end{frame}
+
+\subsection{Phrase List Development}
 \begin{frame}
 \frametitle{Phrase List Development}
     \begin{itemize}
@@ -297,6 +366,7 @@
 
 \end{frame}
 
+\subsection{Dependency Parsing}
 \begin{frame}
     \frametitle{Dependency Parsing}
     \begin{figure}
@@ -304,15 +374,20 @@
     \end{figure}
 \end{frame}
 
+\subsection{Examples}
 \begin{frame}
     \frametitle{Phrase List for Long Text}
-    Example of phrases used for Long Text
+    \begin{figure}
+        \includegraphics[scale=0.5]{wordlist_rss}
+    \end{figure}
 \end{frame}
 
 
 \begin{frame}
     \frametitle{Phrase List for Short text}
-    Example of Phrases used for Short text
+     \begin{figure}
+        \includegraphics[scale=0.5]{wordlist_twitter}
+     \end{figure}
 \end{frame}
 
 
@@ -325,7 +400,12 @@
 \end{frame}
 
 \section{Evaluation}
+\begin{frame}
+\frametitle{Table of Contents}
+\tableofcontents[currentsection]
+\end{frame}
 
+\subsection{Evaluation Methodology}
 \begin{frame}
 \frametitle{Evaluation Methodology}
     \begin{itemize}
@@ -340,26 +420,24 @@
 
 
 \begin{frame}
-    \frametitle{Evaluation Methodology Contd}
+    \frametitle{Evaluation Methodology (contd ...)}
     \begin{itemize}
         \item
             Date Score
-            \begin{equation}
+            \begin{equation*}
                 \operatorname{LS}=1 - \frac{\min(\textrm{distance offset}, 300)}{300}
-            \end{equation}
+            \end{equation*}
         \item
             Location Score
-            \begin{equation}
+            \begin{equation*}
                 \operatorname{DS}=1 - \frac{\min(\textrm{date offset}, \operatorname{INTERVAL})}{\operatorname{INTERVAL}}
-            \end{equation}
+            \end{equation*}
 
         \item
             Total Quality Score
-            \begin{equation}
+            \begin{equation*}
                 \operatorname{QS}=(\operatorname{DS} + \operatorname{QS})*2
-            \end{equation}
-
-
+            \end{equation*}
     \end{itemize}
 
 \end{frame}
@@ -400,9 +478,7 @@
 
 \begin{frame}
     \frametitle{Individual Source Level Perfomance}
-\begin{table}[tb!]
-    \tiny
-    \centering
+    \resizebox{\linewidth}{!}{
     \begin{tabular}{|*{17}{c|}}
         \hline
         & \multicolumn{4}{ |c| }{News/Blogs} & \multicolumn{4}{ |c| }{Twitter} & \multicolumn{4}{ |c| }{Facebook} & \multicolumn{4}{ |c| }{Combined}\\
@@ -421,10 +497,9 @@
         VE &{\bf3.80}&{\bf1.00}&0.36&{\bf3.27}&3.68&0.97&0.33&2.39&-&-&-&-&3.64&0.99&{\bf0.69}&2.88\\
         ALL &3.34&0.69&0.35&{\bf4.57}&3.62&{\bf0.97}&0.15&2.82&3.66&0.74&0.03&2.44&3.36&0.73&{\bf0.51}&4.08\\
         \hline
-    \end{tabular}
-\end{table}
+    \end{tabular}}
 \end{frame}
-
+\iffalse
 \begin{frame}
     \frametitle{RSS Feeds + Twitter-Urls}
 \end{frame}
@@ -440,7 +515,7 @@
 \begin{frame}
     \frametitle{all Sources}
 \end{frame}
-
+\fi
 \begin{frame}
     \frametitle{Performance over time}
     \begin{figure}
