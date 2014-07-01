@@ -205,12 +205,36 @@
 \frametitle{Preliminaries-Probabilistic Soft Logic}
     \begin{itemize}
         \item
-            Framework for collective probabilistic reasoning
+            Framework for collective probabilistic reasoning in relational domains
         \item
-            User defined predicates and rules
+            Uses first order logic rules as a template language for graphical models
         \item
-            MPE Inference
+            Soft truth values
+        \item
+            Applications in collective classification, ontology alignment,opinion diffusion, graph summarization etc
+        \item
+            A simple PSL rule:
+            \begin{figure}
+                \includegraphics[scale=0.3]{psl_rule_example}
+            \end{figure}
     \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{PSL MPE Inference}
+    \begin{itemize}
+        \item Lukasiewicz t-norm is used to determine the degree to which a ground rule is satisfied
+        \item Most Probable Explanation or Inference (MPE): Inferring the most likely values for a proposition given values of remaining propositions
+            \begin{figure}
+                \includegraphics[scale=0.4]{psl_equation}
+            \end{figure}
+        \item Here,
+            $I$ is an interpretation of the proposition,
+
+            $\lambda_r$ is the weight of the rule,
+
+            $d_r(I)$ is the distance to satisfaction of the rule (degree to which the condition/rule is violated)
+        \end{itemize}
 \end{frame}
 
 \section{Linguistic Preprocessing}
@@ -390,6 +414,25 @@
      \end{figure}
 \end{frame}
 
+\subsection{Phrase Matching}
+\begin{frame}
+    \frametitle{Phrase Matching}
+    \begin{itemize}
+        \item
+            Sample phrase matching rule:
+            \begin{figure}
+                \includegraphics[scale=0.5]{phrase_rule}
+            \end{figure}
+        \item
+            Linguistically sophisticated and flexible matching
+        \item
+            Near regex style matching
+        \item
+            Example matched sentence:
+            {\em ``The students are planning a couple of big protests tomorrow"}
+    \end{itemize}
+\end{frame}
+
 
 \begin{frame}
     \frametitle{System Framework Once again}
@@ -545,4 +588,50 @@
     \end{figure}
 \end{frame}
 
+\begin{frame}
+    \frametitle{Conclusion and Framework}
+    \begin{itemize}
+        \item
+            Current system capable of detecting planned protests and resolve $(i)$ date and $(ii)$location of an event satisfactorily
+        \item
+            Different sources have different advantages and superiorities
+        \item
+            Future work is aimed at three aspects
+            \begin{itemize}
+                \item
+                    Address situations involving nationwide protests and systems of protests
+                \item
+                    Generalize system to be able to make predictions from groups of articles and possibly from different sources
+                \item
+                    Generalize system to detect not-so-explicitly stated expressions of discontent
+                \item
+                    Generalize approach to consider other population level events of interest other than civil unrest like domestic political crises
+                \end{itemize}
+        \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{End}
+    \center{Thank You!}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Acknowledgement}
+    \center{{\large Acknowledgement}}
+\end{frame}
+
+
+\begin{frame}[noframenumbering]
+    \frametitle{Appendix A}
+    \begin{itemize}
+        \item  Lukasiewicz t-norm
+    \begin{figure}
+        \includegraphics[scale=0.4]{luke_norm}
+    \end{figure}
+    \item Distance to Satisfaction
+    \begin{figure}
+        \includegraphics[scale=0.4]{dis_sat_psl}
+    \end{figure}
+\end{itemize}
+\end{frame}
 \end{document}
