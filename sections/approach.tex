@@ -59,12 +59,14 @@ the body of the tweet.
 
 \subsubsection{Facebook Events}
 We use Facebook Graph API and Facebook Query Language (FQL) to obtain Facebook Event data.
-The Graph API is used to query/search for Facebook Events with a particular keyword. We make use of a very specific list of 20 keywords that mostly signify protest or ways to protest 
-in the 3 languages English, Spanish and Portuguese. The Graph API returns a list of all Facebook Event IDS that contain a keyword irrespective of its location. The IDs of Event Pages are then used in a FQL query to obtain the features of an event like count of members, creator of the event, number of invitations sent, number of accepted invitations, number rejected, location and venue, start and end date, description of event, host details,etc. The host details in an Event page and the details about its creator are very critical in identifying if the Event page is protest related. We ignore Events hosted by musical bands, restaurants or other commercial organizations. We also ignore events hosted by an individual. Fig.~\ref{fbevent_example} shows an example of a Facebook Event page calling for protest against the construction of the Temple of Solomon in Sao Paulo, Brazil.
+The Graph API is used to query/search for Facebook Events with a particular keyword. We make use of a very specific list of 20 keywords that signify protest or ways to protest in one of three prominent languages -- English,  Spanish and Portuguese -- in our region of interest. The Graph API returns a list of all Facebook Event IDS that contain a keyword irrespective of its location. The IDs of Event Pages are then used in a FQL query to obtain the features of an event like count of members, creator of the event, number of invitations sent, number of accepted invitations, number rejected, location and venue, start and end date, description of event, host details,etc. The host details in an Event page and the details about its creator are very critical in identifying if the Event page is protest related. The Facebook-Event data we collected spans from december 2013 to march 2014. Obtaining historical data from Facebook depends on whether the Facebook Event page created sometime in the history is still kept active by the creator. If the page is deleted then it is not possible to obtain the data. 
+
+Besides filtering the Facebook Event dataset for the presence of certain keywords we also do some filtering based on origin/creator of an event. We ignore events hosted by musical bands, restaurants or other commercial organizations. We also ignore events hosted by an individual. The list of organizations to ignore was built manually from the list of possible values as observed. Fig.~\ref{fbevent_example} shows an example of a Facebook Event page calling for protest against the construction of the Temple of Solomon in Sao Paulo, Brazil.
+
 
 \begin{figure*}
     \centering
-    \includegraphics[width=\textwidth]{FB_Event_example}
+    \includegraphics[scale=0.4]{FB_Event_example}
     \caption{Example of a Facebook Event}
     \label{fbevent_example}
 \end{figure*}
@@ -86,18 +88,31 @@ we use Basis Technology's Rosette Linguistics Platform (RLP) suite of multilingu
 The output of linguistic preprocessing serves as input to subsequent deeper analysis in which 
 date expressions are normalized and the geographic focus of the text identified.
 
-Date processing is particularly crucial to the identification of
+
+\section{Temporal Information Extraction}
+Temporal Information Extraction(TIE) is particularly crucial to the identification of
 future oriented statements. We use the TIMEN~\cite{LlorensDGS12} date
-normalization package to normalize and deindex expressions referring
-to days in English, Spanish and Portuguese. This system makes use of
-meta-data such as the day of publication, and other information about
+normalization package to normalize and deindex temporal expressions.
+A temporal expression is any word or phrase that describe a point, duration or recurrence in time.
+TIMEN is a community-driven tool for temporal expression normalisation .i.e, interpretting a temporal expression accurately and converting it into ISO-9601 datetime stamp.
+TIMEN allows a good amount of reusability and extensibility. TIMEN architecture also clearly separates the algorithms which do the normalization from the knowledge and rule base necessary for the process, thus making it wasy to extend to multiple languages.
+The TIMEN system makes use of meta-data such as the day of publication, and other information about
 the linguistic context of the date expression to determine for each
 date expression, what day (or week, month or year) it refers to.  For
 example in a tweet produced on June 10, 2014, the occurrence of the
 term {\em Friday} used in a future-tense sentence {\em We'll get
   together on Friday} will be interpreted as June 13, 2014.  Each
 expression identified as a date by the RLP preprocessor is normalized
-in this way.
+in this way.Internally, TIMEN converts a temporal expression to be normalized into a symbolic representation using a knowledge base (KB). The rules are then matched against this representaion to produce a normalised output.The TIMEN architecture is shown in ~\ref{fig:TIMEN_arch}
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.3]{TIMEN_arch}
+    \caption{TIMEN architecture}
+    \label{fig:TIMEN_arch}
+\end{figure}
+
+
 \vspace{-.8em}
 
 \section{Phrase filtering}
@@ -178,6 +193,7 @@ This phrase learning process is illustrated in Fig.~\ref{fig:phraselearning}.
 \end{figure}
 
 \section{Geocoding}
+\label{sec:geocoding}
 \vspace{-.8em}
 \label{subsection:geocoding}
 After linguistic preprocessing and suitable phrase filtering,
@@ -186,6 +202,7 @@ specification of the geographical focus of the text---specified as a
 city, state, country triple---that indicates the locality that the
 text is about. We make use of different geocoding methodologies
 for Twitter messages, for Facebook Events pages, and for news articles and blogs.
+
 These are described below.
 \vspace{-.8em}
 
@@ -336,6 +353,6 @@ if the tweet is re-tweeted at least five times).
 A warning is generated for the date indicated by the future date
 expression and the location which is the geographical focus of the
 document.  
-In the case of Facebook, an event page is considered to be good evidence for an alert if
-there are more attendees for the event than rejects.  The date and
+In the case of Facebook, an event page is considered to be a good evidence for an alert if
+there are more attendees (sum of number of accepted invitations and number of `maybe') for the event than rejects (number of declined invitations). The date and
 location are read off from the event page directly.

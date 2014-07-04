@@ -30,23 +30,37 @@ the date score is concerned with quality or accuracy.
 
 We conduct a series of experiments to evaluate the performance of our system.\\
 
-\begin{figure*}
+\begin{figure}
 \centering
-\begin{subfigure}{\columnwidth}
-  \centering
-  \includegraphics[scale=0.7]{gsr_distribution}
-  \caption{GSR distribution from 2012-11 to 2014-03.}
-  \label{fig:gsrdistribution}
+\begin{subfigure}{\textwidth}
+    \centering
+    \begin{subfigure}{0.45\textwidth}
+    \includegraphics[scale=0.45]{gsr_distribution}
+    \end{subfigure}%
+    \quad
+    \begin{subfigure}{0.45\textwidth}
+    \includegraphics[scale=.45]{pp_dist}
+    \end{subfigure}
+    \caption{Distribution of  GSR events (left) and Alerts(right) by country}
+    \label{fig:distribution}
+\end{subfigure}%
+
+\begin{subfigure}{\textwidth}
+    \centering
+    \includegraphics[scale=0.45]{warnings_sources}
+    \caption{Distribution of alerts from different sources.}
 \end{subfigure}
-\begin{subfigure}{\columnwidth}
-  \centering
-  \includegraphics[scale=.7]{pp_dist}
-  \caption{Alerts distribution from 2012-11 to 2014-03.}
-  \label{fig:ppdistribution}
-\end{subfigure}
-\caption{Distribution of alerts and GSR events across the countries studied in this thesis.}
-\label{fig:distribution}
-\end{figure*}
+\caption{Distribution of alerts and GSR events}
+\label{fig:sourcedistribution}
+\end{figure}
+%\begin{figure}
+%\centering
+%\subfloat{\includegraphics[width=0.45\textwidth]{gsr_distribution}}%
+%    \qquad
+%\subfloat{\includegraphics[width=0.45\textwidth]{pp_dist}}%
+%\caption{Distribution of alerts and GSR events across the countries studied in this thesis.}
+%\label{fig:distribution}
+%\end{figure}
 
 \noindent
 {\bf Distribution of protests detected by the system compared with the
@@ -55,7 +69,7 @@ Fig.~\ref{fig:distribution} reveals pie charts of both distributions. As shown, 
 experience the lion's share of protests in our region of interest, and the protests detected also match these modes
 although not the specific percentages. The smaller countries like Ecuador, El Salvador, and Uruguay do experience
 protests but which are not as prominently detected as those for other countries; we attribute this to their smaller
-social media footprint (relative to countries like Brazil and Venezuela).\\
+social media footprint (relative to countries like Brazil and Venezuela). ~\ref{fig:sourcedistribution} reveals the distribution of warnings from different sources.\\
 \begin{table*}[tb!]
     \tiny
     \centering

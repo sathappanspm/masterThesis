@@ -1,17 +1,17 @@
-Four categories of related work 
+Five categories of related work 
 %-- \emph{Event Detection, Temporal Information Extraction, Future Retrieval, Extraction of Planned Events and Event Forecasting} -- 
 are briefly discussed here.
 \begin{table*}
     \centering
     \caption{Comparison of our approach against other future retrieval techniques.}
-    \begin{tabular}{l p{1.5cm} p{1.5cm} p{1.5cm} p{1.5cm} p{3cm}}%{|*{17}{c|}}
+    \begin{tabular}{l p{1.6cm} p{2cm} p{2cm} p{1.8cm} p{3cm}}%{|*{17}{c|}}
         \hline
-        & Relative date resolution & Ingest multiple sources? & Reasoning about location & Learning word/phrase filters \\
+        & Relative date resolution & Ingest multiple sources? & {\bf Reasoning about location} & {\bf Learning word/phrase filters} \\
         \hline
         `Future' Search Engines~\cite{Kawai:2010:CSE, Jatowt:2011:ECE,baeza2005searching}&\checkmark & & \\
         Time-to-Event Recognition~\cite{tops2013predicting, bosch2013estm}&\checkmark & & \\
         Planned Protest Detection~\cite{xu2014civil,compton2013detecting} & &\checkmark & &\\ 
-        This thesis &\checkmark &\checkmark &\checkmark&\checkmark\\  \hline
+        {\bf This thesis} &\checkmark &\checkmark &\checkmark&\checkmark\\  \hline
 \end{tabular}
 \label{comp-table}
 \end{table*}
@@ -98,3 +98,15 @@ iii) handling relative mentions of dates, and
 iv) providing a rich representational and reasoning basis for location. 
 As Table~\ref{comp-table} summarizes, current systems provide only partial solutions and the proposed
 approach addresses all four desired criteria.
+
+\section{Geocoding}
+A News report, blog posting or a tweet can have multiple locations associated with it. It is necessary to disambiguate each of these locations and try to identify what they refer to -- whether they refer to the location from where the document is written, users home location or the geo-focus of the content etc.
+
+Identifying the different geographical locations associated with a tweet/news document is of great interest to the researchers recently.
+David et al.~\cite{hrlgeocoder}, Lindamood et al.~\cite{inferringSN} and Backstrom et al.~\cite{findMe} talk about using the network information based on social relationships to infer an users location.These approaches infer locations by spatially propagating location assignments through the social network, using a samll number of known users/locations. Such approaches are mostly based on the assumption that people we interact with on a daily basis always live near us.
+
+Amitay et al.~\cite{amitay2004web}, Fink et al.~\cite{geoBlogs},Cheng et al.~\cite{youAreTweet}, etc., use content based approaches to determine a documents location. Yin et al.~\cite{geoTopic} introduces a topic modelling approach called Latent Geographical Topic Analysis, that combines location and text to identify topics specific to a geographical area. These topics can then be used as important cures to group different geographical regions and also to identify the location of new users based on the content they publish.
+
+Some work has also been done where both knowledge from the content and network are used to infer the location. In ~\cite{geoUserprofiling} Li et al.  builds a unified discriminative influence model to  combine both socail network information and the user-centric information available from his/her tweeting history using a probabilistic framework. Li et al., in yet another work ~\cite{geoMLP}, try to capture the location profile of an user from their followers network and tweet history and also profile the users location for each avaliable relationship in the network.
+
+For our purpose, we try to distinguish between an users home location and the tweets content location.  Thus, we mainly make use of content based approaches for identifying the geographical focus of a document. The approach used is described in detail in section~\ref{sec:geocoding}.
