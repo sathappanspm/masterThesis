@@ -47,7 +47,10 @@
 \usepackage{url}
 \inputencoding{utf8}
 % \usepackage{subfig}
-
+\usepackage{fancyhdr} 
+\fancyhf{}
+\cfoot{\thepage}
+\pagestyle{fancy}
 
 \setlength{\textwidth}{6.5in}
 \setlength{\textheight}{8.5in}
@@ -86,7 +89,7 @@
 Sathappan Muthiah
 \vfill
 
-Dissertation submitted to the Faculty of the \\
+Dissertation submitted to the faculty of the \\
 Virginia Polytechnic Institute and State University \\
 in partial fulfillment of the requirements for the degree of
 
@@ -99,8 +102,8 @@ Computer Science and Applications
 \vfill
 
 Naren Ramakrishnan, Chair \\
-Chang Tien Lu \\
-Graham E Katz \\
+Chang T. Lu \\
+Graham E. Katz \\
 
 \vfill
 
@@ -162,10 +165,9 @@ Civil unrest (protests, strikes, and ``occupy'' events) is a common occurrence i
 \pagebreak
 
 \pagenumbering{arabic}
-\pagestyle{myheadings}
+%\pagestyle{myheadings}
 
 \chapter{Introduction}
-\markright{Sathappan Muthiah \hfill Chapter 1. Introduction \hfill}
 \label{intro}
 \input{sections/introduction}
 %%%%%%%%%%%%%%%%%
@@ -178,11 +180,9 @@ Civil unrest (protests, strikes, and ``occupy'' events) is a common occurrence i
 %
 % Do tables like this:
 \chapter{Related Work}
-\markright{Sathappan Muthiah \hfill Chapter 2. Related Work \hfill}
 \input{sections/related_works}
 
 \chapter{Preliminaries}
-\markright{Sathappan Muthiah \hfill Chapter 3. Preliminaries  \hfill}
 \input{sections/problem}
 
 \section{Probabilistic Soft Logic}
@@ -190,15 +190,12 @@ Civil unrest (protests, strikes, and ``occupy'' events) is a common occurrence i
 \label{section:PSL}
 
 \chapter{Approach}
-\markright{Sathappan Muthiah \hfill Chapter 4. Approach \hfill}
 \input{sections/approach}
 
 \chapter{Experiments}
-\markright{Sathappan Muthiah \hfill Chapter 5. Experiments \hfill}
 \input{sections/experiments}
 
 \chapter{Discussion}
-\markright{Sathappan Muthiah \hfill Chapter 6. Discussion  \hfill}
 We have described an approach to forecasting protests by detecting mentions of future events in news and social
 media. The two twin issues of i) resolving the date and ii) resolving the location have been addressed satisfactorily
 to realize an effective protest forecasting system. As different forms of communication media gain usage, systems
